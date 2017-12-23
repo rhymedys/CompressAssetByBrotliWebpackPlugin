@@ -1,8 +1,9 @@
+
 /*
- * @Author: Rhymedys/Rhymedys@gmail.com 
- * @Date: 2017-12-23 21:15:17 
+ * @Author: Rhymedys/Rhymedys@gmail.com
+ * @Date: 2017-12-23 21:15:17
  * @Last Modified by: Rhymedys
- * @Last Modified time: 2017-12-23 21:46:21
+ * @Last Modified time: 2017-12-23 22:03:34
  */
 
 const async = require('async')
@@ -40,7 +41,7 @@ class CompressAssetByBrotliWebpackPlugin {
     }
   }
 
-  conpress(content, callback) {
+  compress(content, callback) {
     return compressAdapter(content, this.getCompressOptions(), callback)
   }
 
@@ -48,8 +49,8 @@ class CompressAssetByBrotliWebpackPlugin {
     compiler
       .plugin('emit', function (compilation, callback) {
         const assets = compilation.assets
-
         async.forEach(Object.keys(assets), function (file, callback) {
+
           if (this.test && !this.test.test(file)) {
             return callback()
           }
@@ -64,6 +65,7 @@ class CompressAssetByBrotliWebpackPlugin {
           if (originalSize < this.threshold) {
             return callback()
           }
+
 
           this
             .compress(content, function (err, result) {
