@@ -13,8 +13,8 @@ Compress assets by Brotli to serve them with Content-Encoding: br
 ```javascript
   new CompressionAssetByBrotliWebpackPlugin({
       asset: '[path].br[query]',
-			test: /\.(js|css|html|svg)$/,
-			threshold: 5000,  
-			minRatio: 0.8
+      test: /\.(js|css|html|svg)$/,
+      threshold: 5000,  
+      minRatio: 0.8
     })
 ```
