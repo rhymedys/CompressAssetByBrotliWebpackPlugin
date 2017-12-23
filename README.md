@@ -1,4 +1,4 @@
-# CompressionBrotliWebpackPlugin
+# CompressAssetByBrotliWebpackPlugin
 Compress assets by Brotli to serve them with Content-Encoding: br
 ## install
 ```javascript
