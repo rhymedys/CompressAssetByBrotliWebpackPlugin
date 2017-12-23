@@ -3,14 +3,13 @@
  * @Author: Rhymedys/Rhymedys@gmail.com
  * @Date: 2017-12-23 21:15:17
  * @Last Modified by: Rhymedys
- * @Last Modified time: 2017-12-23 22:03:34
+ * @Last Modified time: 2017-12-23 22:14:00
  */
 
 const async = require('async')
 const url = require('url')
 const compressAdapter = require('./compress.js')
 const RawSource = require('webpack-sources/lib/RawSource')
-// import compressAdapter from './compress.js'
 
 class CompressAssetByBrotliWebpackPlugin {
   constructor(options) {
