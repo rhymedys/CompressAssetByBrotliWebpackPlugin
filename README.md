@@ -1,11 +1,11 @@
 # CompressAssetByBrotliWebpackPlugin
 Compress assets by Brotli to serve them with Content-Encoding: br
-## install
+## Install
 ```javascript
   npm i compression-asset-by-brotli-webpack-plugin
 ```
 
-##  import
+##  Import
 ``` javascript
   var CompressionAssetByBrotliWebpackPlugin = require('compression-asset-by-brotli-webpack-plugin');
 ```
@@ -19,7 +19,7 @@ Compress assets by Brotli to serve them with Content-Encoding: br
     })
 ```
 
-## reference
+## Reference
   https://github.com/google/brotli
   
   https://github.com/MayhemYDG/iltorb#brotliencodeparams
