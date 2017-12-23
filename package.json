@@ -14,14 +14,5 @@
     "type": "git",
     "url": "git+https://github.com/rhymedys/CompressAssetByBrotliWebpackPlugin.git"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "jest": "^22.0.0",
-    "rimraf": "^2.6.2",
-    "webpack": "^3.8.1"
-  },
-  "scripts": {
-    "test": "jest",
-    "travis:test": "npm run test -- --runInBand"
-  }
+  "license": "MIT"
 }
