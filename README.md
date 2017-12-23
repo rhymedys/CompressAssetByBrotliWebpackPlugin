@@ -18,3 +18,8 @@ Compress assets by Brotli to serve them with Content-Encoding: br
       minRatio: 0.8
     })
 ```
+
+## reference
+  https://github.com/google/brotli
+  
+  https://github.com/MayhemYDG/iltorb#brotliencodeparams
