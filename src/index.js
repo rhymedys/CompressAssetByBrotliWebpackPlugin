@@ -2,7 +2,7 @@
  * @Author: Rhymedys/Rhymedys@gmail.com 
  * @Date: 2017-12-23 21:15:17 
  * @Last Modified by: Rhymedys
- * @Last Modified time: 2017-12-23 21:25:39
+ * @Last Modified time: 2017-12-23 21:46:21
  */
 
 const async = require('async')
@@ -106,3 +106,7 @@ class CompressAssetByBrotliWebpackPlugin {
       }.bind(this))
   }
 }
+
+
+module.exports = CompressAssetByBrotliWebpackPlugin
+CompressAssetByBrotliWebpackPlugin.prototype.constructor = CompressAssetByBrotliWebpackPlugin
