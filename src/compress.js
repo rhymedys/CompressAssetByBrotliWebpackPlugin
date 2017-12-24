@@ -2,7 +2,7 @@
  * @Author: Rhymedys/Rhymedys@gmail.com
  * @Date: 2017-12-23 20:56:05
  * @Last Modified by: Rhymedys
- * @Last Modified time: 2017-12-23 22:12:52
+ * @Last Modified time: 2017-12-23 22:49:03
  */
 const brotli = require('brotli')
 
@@ -17,7 +17,7 @@ function compressByOriginBrotli(content, options, callback) {
     callback && callback(null, brotli.compress(content, options))
 
   } catch (e) {
-    throw new Error('compressByOriginBrotli error' ,e)
+    throw new Error('compressByOriginBrotli error', e)
   }
 }
 module.exports = compressByOriginBrotli

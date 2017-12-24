@@ -1,15 +1,16 @@
-
 /*
  * @Author: Rhymedys/Rhymedys@gmail.com
  * @Date: 2017-12-23 21:15:17
  * @Last Modified by: Rhymedys
- * @Last Modified time: 2017-12-23 22:14:00
+ * @Last Modified time: 2017-12-24 10:32:58
  */
 
 const async = require('async')
 const url = require('url')
-const compressAdapter = require('./compress.js')
+// const compressAdapter = require('./compress.js')
 const RawSource = require('webpack-sources/lib/RawSource')
+const brotli = require('brotli')
+
 
 class CompressAssetByBrotliWebpackPlugin {
   constructor(options) {
@@ -18,7 +19,6 @@ class CompressAssetByBrotliWebpackPlugin {
     this.test = options.test || options.regExp
     this.threshold = options.threshold || 0
     this.minRatio = options.minRatio || 0.8
-    this.deleteOriginalAssets = options.deleteOriginalAssets || false
   }
 
   /**
@@ -27,7 +27,9 @@ class CompressAssetByBrotliWebpackPlugin {
    * @memberof CompressAssetByBrotliWebpackPlugin
    */
   getCompressOptions() {
-    const {options} = this
+    const {
+      options
+    } = this
     return {
       mode: options.mode || 0,
       quality: options.quality || 11,
@@ -50,9 +52,7 @@ class CompressAssetByBrotliWebpackPlugin {
         const assets = compilation.assets
         async.forEach(Object.keys(assets), function (file, callback) {
 
-          if (this.test && !this.test.test(file)) {
-            return callback()
-          }
+          if (this.test && !this.test.test(file)) return callback()
 
           const asset = assets[file]
           let content = asset.source()
@@ -61,20 +61,13 @@ class CompressAssetByBrotliWebpackPlugin {
           }
 
           const originalSize = content.length
-          if (originalSize < this.threshold) {
-            return callback()
-          }
-
+          if (originalSize < this.threshold) return callback()
 
           this
             .compress(content, function (err, result) {
-              if (err) {
-                return callback(err)
-              }
+              if (err) return callback(err)
 
-              if (result.length / originalSize > this.minRatio) {
-                return callback()
-              }
+              if (result.length / originalSize > this.minRatio) return callback()
 
               const parse = url.parse(file)
               const sub = {
@@ -96,9 +89,6 @@ class CompressAssetByBrotliWebpackPlugin {
                 .replace(/\[(file|fileWithoutExt|ext|path|query)]/g, function (p0, p1) {
                   return sub[p1]
                 })
-              if (this.deleteOriginalAssets) {
-                delete assets[file]
-              }
 
               assets[newFile] = new RawSource(result)
               callback()
