@@ -2,7 +2,7 @@
  * @Author: Rhymedys/Rhymedys@gmail.com
  * @Date: 2017-12-23 21:15:17
  * @Last Modified by: Rhymedys
- * @Last Modified time: 2017-12-24 10:32:58
+ * @Last Modified time: 2017-12-24 10:34:19
  */
 
 const async = require('async')
@@ -71,7 +71,7 @@ class CompressAssetByBrotliWebpackPlugin {
 
               const parse = url.parse(file)
               const sub = {
-                file: file,
+                file,
                 fileWithoutExt: file
                   .split('.')
                   .slice(0, -1)
